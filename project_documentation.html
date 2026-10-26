@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>تقرير مشروع تطبيق شُغل WORK - التوثيق الهندسي الكامل</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap');
+
+    @page {
+        size: A4;
+        margin: 20mm 15mm 20mm 15mm;
+    }
+
+    body {
+        font-family: 'Tajawal', 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+        color: #1e293b;
+        background-color: #ffffff;
+        line-height: 1.8;
+        font-size: 13.5pt;
+        margin: 0;
+        padding: 0;
+        text-align: justify;
+    }
+
+    /* Target Print Styling */
+    @media print {
+        .page-break {
+            page-break-before: always;
+        }
+        .no-print {
+            display: none;
+        }
+        body {
+            background-color: #ffffff;
+        }
+    }
+
+    /* Title Page Styling */
+    .title-page {
+        height: 95vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        page-break-after: always;
+        padding: 40px 20px;
+        border: 8px double #0f172a;
+        box-sizing: border-box;
+        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    }
+
+    .university-header {
+        font-size: 16pt;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 20px;
+    }
+
+    .project-logo {
+        font-size: 48pt;
+        color: #ea580c;
+        margin: 15px 0;
+    }
+
+    .main-title {
+        font-family: 'Cairo', sans-serif;
+        font-size: 32pt;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 10px 0;
+        line-height: 1.3;
+    }
+
+    .sub-title {
+        font-size: 18pt;
+        font-weight: 600;
+        color: #ea580c;
+        margin-bottom: 30px;
+    }
+
+    .meta-box {
+        background-color: #f1f5f9;
+        border-right: 6px solid #ea580c;
+        padding: 20px 30px;
+        border-radius: 8px;
+        width: 80%;
+        text-align: right;
+        margin: 30px 0;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    .meta-item {
+        font-size: 14pt;
+        margin: 10px 0;
+        color: #334155;
+    }
+
+    .meta-item strong {
+        color: #0f172a;
+    }
+
+    .dedication-box {
+        background-color: #fff7ed;
+        border: 1px solid #ffedd5;
+        border-radius: 12px;
+        padding: 15px 25px;
+        margin-top: 20px;
+        font-style: italic;
+        color: #9a3412;
+        font-size: 13pt;
+        width: 85%;
+    }
+
+    /* General Typography & Headers */
+    h1 {
+        font-family: 'Cairo', sans-serif;
+        font-size: 22pt;
+        font-weight: 800;
+        color: #0f172a;
+        border-bottom: 3px solid #ea580c;
+        padding-bottom: 8px;
+        margin-top: 35px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-family: 'Cairo', sans-serif;
+        font-size: 17pt;
+        font-weight: 700;
+        color: #1e293b;
+        background-color: #f8fafc;
+        padding: 8px 14px;
+        border-right: 5px solid #ea580c;
+        border-radius: 0 6px 6px 0;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+
+    h3 {
+        font-size: 14.5pt;
+        font-weight: 700;
+        color: #ea580c;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-bottom: 12px;
+        text-indent: 15px;
+    }
+
+    ul, ol {
+        margin-bottom: 15px;
+        padding-right: 25px;
+    }
+
+    li {
+        margin-bottom: 6px;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 12pt;
+    }
+
+    th, td {
+        border: 1px solid #cbd5e1;
+        padding: 10px 12px;
+        text-align: right;
+    }
+
+    th {
+        background-color: #0f172a;
+        color: #ffffff;
+        font-weight: 700;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+
+    /* Code Blocks Styling */
+    pre, code {
+        font-family: 'Consolas', 'Courier New', monospace;
+        direction: ltr;
+        text-align: left;
+    }
+
+    pre {
+        background-color: #0f172a;
+        color: #f8fafc;
+        padding: 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 11pt;
+        line-height: 1.5;
+        border-left: 5px solid #ea580c;
+        margin: 20px 0;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+
+    /* Custom Highlight Box */
+    .note-box {
+        background-color: #eff6ff;
+        border-right: 5px solid #2563eb;
+        padding: 14px 18px;
+        border-radius: 6px;
+        margin: 20px 0;
+        font-size: 13pt;
+    }
+
+    .diagram-box {
+        background-color: #f8fafc;
+        border: 2px dashed #cbd5e1;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        margin: 20px 0;
+        font-family: monospace;
+        direction: ltr;
+    }
+</style>
+</head>
+<body>
+
+<!-- ================= TITLE PAGE ================= -->
+<div class="title-page">
+    <div>
+        <div class="university-header">
+            مشروع التخرج والتوثيق الهندسي لمساق تطوير تطبيقات الهواتف الذكية (Android Development)
+        </div>
+        <div class="project-logo">🛠️ WORK</div>
+        <div class="main-title">تطبيق "شُغل - WORK"</div>
+        <div class="sub-title">منصة سحابية تفاعلية لسوق الخدمات المصغرة والمهن المستقلة</div>
+    </div>
+
+    <div class="meta-box">
+        <div class="meta-item"><strong>إعداد الطالب:</strong> إنجاز تنفيذي وبرمجي فردي متكامل</div>
+        <div class="meta-item"><strong>تحت إشراف وتوجيه الأستاذ الفاضل:</strong> أستاذ علي</div>
+        <div class="meta-item"><strong>التقنيات المستعملة:</strong> Android SDK (Java 11), Firebase Realtime Database, Firebase Auth, Material Design 3</div>
+        <div class="meta-item"><strong>التاريخ:</strong> الأكاديمي 2026م</div>
+    </div>
+
+    <div class="dedication-box">
+        "أتقدم بجزيل الشكر والامتنان لأستاذي الفاضل <strong>أستاذ علي</strong> على توجيهاته القيمة ومتابعة خطوات تطوير هذا المشروع، والتي كان لها أبلغ الأثر في خروج التطبيق بهذه الصورة الهندسيّة المتكاملة."
+    </div>
+</div>
+
+<!-- ================= TABLE OF CONTENTS ================= -->
+<div class="page-break"></div>
+<h1>📋 فهرس المحتويات</h1>
+<table>
+    <thead>
+        <tr>
+            <th>القسم</th>
+            <th>عنوان المبحث</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>القسم الأول</strong></td><td>المقدمة والخلفية الهندسية للمشروع والدراسات السابقة</td></tr>
+        <tr><td><strong>القسم الثاني</strong></td><td>هيكلية المشروع (Project Architecture & Component Breakdown)</td></tr>
+        <tr><td><strong>القسم الثالث</strong></td><td>الخوارزميات المبتكرة، المطابقة بالميزانية، وضغط الصور</td></tr>
+        <tr><td><strong>القسم الرابع</strong></td><td>الربط السحابي مع Firebase Realtime Database و Auth</td></tr>
+        <tr><td><strong>القسم الخامس</strong></td><td>حالات الاستخدام (Use Cases) ومخطط الفئات (UML Class Diagram)</td></tr>
+        <tr><td><strong>القسم السادس</strong></td><td>دليل الاستخدام المصور الشامل للتطبيق (User Manual)</td></tr>
+        <tr><td><strong>القسم السابع</strong></td><td>قواعد البيانات الشجرية السحابية NoSQL بالتفصيل</td></tr>
+        <tr><td><strong>القسم الثامن</strong></td><td>التوثيق البرمجي القياسي (JavaDocs) والدليل المبرمج</td></tr>
+        <tr><td><strong>القسم التاسع</strong></td><td>أثر المشروع العلمي والخبرات والتحديات المكتسبة</td></tr>
+        <tr><td><strong>القسم العاشر</strong></td><td>المراجع العلمية المعتمدة (APA Style) والملاحق البرمجية</td></tr>
+    </tbody>
+</table>
+
+<!-- ================= SECTION 1 ================= -->
+<div class="page-break"></div>
+<h1>1. المقدمة (Introduction)</h1>
+
+<h2>1.1 معلومات عن محتويات التقرير وتسلسل الأقسام</h2>
+<p>يقدم هذا التقرير وثيقة هندسية وفنية شاملة لمشروع تطوير تطبيق الأندرويد <strong>"شُغل - WORK"</strong>. يتطرق التقرير إلى دراسة خلفية المشروع ودوافع تطويره، مروراً بالدراسات السابقة والابتكارات البرمجية المعتمدة، ثم يفصّل في الهيكلية البرمجية (Architecture)، وخوارزميات المطابقة الذكية، والربط السحابي الحقيقي مع سحابة <strong>Firebase</strong>، وهياكل البيانات المستعملة، وتفاصيل قواعد البيانات NoSQL، مع توثيق كود الجافا (JavaDocs)، ودليل استخدام تفصيلي مصوّر، والآثار التعلمية والمهارية المكتسبة خلال الرحلة.</p>
+
+<h2>1.2 من أين جاءت فكرة المشروع (خلفية المشروع)</h2>
+<p>جاءت فكرة مشروع <strong>"شُغل - WORK"</strong> من واقع التحديات الاقتصادية والتحول الرقمي المتسارع نحو العمل الحر المستقل (Freelancing) وتقديم الخدمات المصغرة والمهنية. يُعاني الكثير من الشباب والمهنيين والطلاب أصحاب المهارات (في البرمجة، التصميم، الترجمة، التسويق، الصيانة) من صعوبة الوصول إلى العملاء المحليين وتكاليف التسويق العالية. في المقابل، يواجه العملاء صعوبة في إيجاد مقدمي خدمات موثوقين بأسعار تناسب ميزانياتهم المحددة.</p>
+<p>من هنا نشأت الحاجة لبناء منصة أندرويد تفاعلية ومباشرة تجمع بين <strong>العميل (Client)</strong> و<strong>مقدم الخدمة (Provider)</strong> عبر بيئة عمل مرنة توفر المزامنة اللحظية، والبحث الذكي بالميزانية، والمحادثات المباشرة، مع خيارات التواصل الفوري عبر الواتساب والمكالمات.</p>
+
+<h2>1.3 دراسة أولية والابتكار الجديد بالمشروع</h2>
+<p>عند دراسة سوق التطبيقات الحالية (مثل خمسات، مستقل، Fiverr، Upwork)، وُجد أنها تعتمد بنسبة كبيرة على واجهات ويب أو تطبيقات معقدة ذات إجراءات تسجيل طويلة وعمولات عالية ونظام بحث تقليدي يعتمد فقط على النصوص والكلمات المفتاحية.</p>
+
+<div class="note-box">
+    <strong>💡 الإضافات والابتكارات الجديدة في تطبيق "شُغل - WORK":</strong>
+    <ul>
+        <li><strong>خوارزمية التقارب في السعر والميزانية (Smart Price Proximity Matching Algorithm):</strong> لا يكتفي التطبيق بالبحث عن اسم الخدمة فقط، بل يستقبل الميزانية المستهدفة من العميل بالدولار ($)، ويقوم بحساب نسبة التقارب والانحراف في السعر وعرض الشارات التوضيحية (مثل: <em>"مطابق لميزانيتك بالضبط 🎯"</em> أو <em>"أقل من ميزانيتك بـ $10 💡"</em>).</li>
+        <li><strong>نظام المزامنة اللحظية ثنائية الاتجاه (Realtime Multi-Device Sync):</strong> الربط المباشر بـ Firebase Realtime Database بحيث أي خدمة يتم طرحها، أو أي طلب يتم إرساله، أو أي تغيير في حالة الطلب (قبول/رفض/إكمال) يظهر فوراً على أجهزة جميع المستخدمين الآخرين المفتوح عندهم التطبيق بدون الحاجة لتحديث الصفحة.</li>
+        <li><strong>نظام الدردشة المباشرة المدمج في التطبيق (In-App Realtime Chat System):</strong> توفير شات فوري حقيقي داخل التطبيق مع حفظ وتزامن الرسائل بين العميل والمزود لحظياً عبر السحابة.</li>
+        <li><strong>الدمج بين التواصل الداخلي والتواصل المباشر عبر الواتساب (Dual Communication Channels):</strong> إمكانية الانتقال بزر واحد من التطبيق إلى محادثة واتساب مجهزة برقم الهاتف والرسالة الترحيبية التلقائية.</li>
+    </ul>
+</div>
+
+<h2>1.4 دراسات سابقة وإطار نظري</h2>
+<p>تمت دراسة وتحليل عدة منصات سابقة للوقوف على إيجابياتها وسلبياتها:</p>
+<ul>
+    <li><strong>منصة خمسات (Khamsat):</strong> منصة عربية ممتازة للخدمات المصغرة، لكنها تعتمد على الموافقة اليدوية وتأخر التحديثات وبطء التواصل المباشر بين الطرفين قبل الشراء.</li>
+    <li><strong>تطبيق Fiverr:</strong> منصة عالمية ضخمة لكنها معقدة الواجهات وتفتقر إلى خيار البحث المباشر بالنطاق السعري التقريبي المرن.</li>
+    <li><strong>تطبيق Upwork:</strong> مخصص للمشاريع الكبيرة والأنظمة المعقدة، ولا يناسب أصحاب المهن والخدمات السريعة والمحلية.</li>
+</ul>
+<p><strong>الاستفادة والتطوير في مشروعنا:</strong> تم بناء نموذج مبسط وسريع ومباشر يقلل الاحتكاك (Low Friction)، ويركز على الأداء الفائق والواجهات العصرية المصممة وفق Material Design 3، مع دعم الدخول المباشر واختيار الدور (عميل أو مقدم خدمة) في ثوانٍ معدودة.</p>
+
+<h2>1.5 التحديات التي واجهتني خلال المشروع وكيف تغلبت عليها</h2>
+<ol>
+    <li><strong>تكرار معرفات الإضافات وتعارض Gradle Plugins:</strong> حدوث خطأ <code>Plugin with id 'com.android.application' was already requested</code> بسبب تكرار الاستدعاء في <code>build.gradle.kts</code>. تم حله بتنظيف وإصلاح ملفات التجميع.</li>
+    <li><strong>مشكلة عدم تطابق أسماء الحزم (Package Mismatch):</strong> ظهور خطأ <code>:app:processDebugGoogleServices</code> بسبب اختلاف اسم الحزمة في <code>google-services.json</code> عن <code>applicationId</code>. تم تعديل اسم الحزمة إلى <code>com.example.work</code>.</li>
+    <li><strong>تحدي المزامنة الحية وعناوين الفايربيس (Multi-Region Database URLs):</strong> تعامل التطبيق مع عناوين الفايربيس المخصصة (<code>work-4451a-default-rtdb</code>) وتم بناء صف <code>FirebaseHelper</code> الذكي للتعامل مع النطاقات الجغرافية المختلفة (US, EU, Asia).</li>
+    <li><strong>تخزين الصور المرفقة ومشاركتها سحابياً دون خادم إضافي:</strong> تطوير خوارزمية ضغط وتقليص أبعاد الصور وتحويلها إلى سلاسل <strong>Base64 String</strong> لتخزينها مباشرة في سحابة Realtime Database وعرضها بسلاسة على كل الأجهزة.</li>
+    <li><strong>إدارة صلاحيات الفايربيس وتنبيهات المستخدم:</strong> معالجة استجابات <code>Permission denied</code> من خلال القواعد التلقائية وعرض تنبيهات توست شفافة على الشاشة.</li>
+</ol>
+
+<h2>1.6 المشكلة التي يعالجها المشروع والحاجة لها</h2>
+<p>يعالج المشروع مشكلة الفجوة بين العرض والطلب في سوق الخدمات المصغرة والمهن الحرة. يحتاج العميل لوسيلة سريعة للبحث عن المهارات بأسعار متقاربة مع ميزانيته بدون المماطلة، بينما يحتاج صاحب المهارة إلى لوحة تحكم مجانية وسريعة لعرض خدماته وإدارة الطلبات الواردة والمحادثات من هاتفه مباشرة.</p>
+
+<h2>1.7 سبب اختيار الموضوع</h2>
+<p>اخترت هذا الموضوع لشغفي الشخصي الشديد بتطوير تطبيقات الهواتف الذكية بلغة Java، ونتيجة الملاحظة الميدانية لوجود حاجة ماسة لدى زملائي والشباب لأداة تجمع أصحاب المهارات بالعملاء المحليين بدعم للعملات واللغة العربية.</p>
+
+<!-- ================= SECTION 2 ================= -->
+<div class="page-break"></div>
+<h1>2. هيكلية المشروع (Project Architecture & Components)</h1>
+
+<h2>2.1 ملخص الحل المقترح وسبب اختياره</h2>
+<p>تم اختيار معمارية الطبقات النظيفة (Layered Architecture) القائمة على أسلوب <strong>Repository Pattern</strong> مع واجهات التفاعل المباشرة <strong>Material 3 Components</strong>. أثبت هذا الحل كفاءته العالية في فصل منطق البيانات (Data Layer) عن واجهات المستخدم (UI Layer)، مما سمح بربط واجهات التطبيق بمستمعي الفايربيس (<code>ValueEventListener</code>) وتحديث الشاشات تلقائياً عند طروء أي تغيير.</p>
+
+<h2>2.2 الرسم الهيكلي المباشر لعناصر التطبيق (High-Level Architecture)</h2>
+<div class="diagram-box">
++-----------------------------------------------------------------------+<br>
+|                    PRESENTATION LAYER (Activities & UI)              |<br>
+|  [MainActivity] -> [RoleSelectionActivity]                            |<br>
+|        |                     |                                        |<br>
+|        +------> [ClientMainActivity] <---> [SearchActivity]          |<br>
+|        |               |                      |                       |<br>
+|        |               +--------+             |                       |<br>
+|        |                        v             v                       |<br>
+|        +------> [ProviderMainActivity] <-> [ServiceDetailActivity]    |<br>
+|        |               |                          |                   |<br>
+|        +------> [AddServiceActivity]              v                   |<br>
+|                                            [ChatActivity]             |<br>
++-----------------------------------------------------------------------+<br>
+                                 | |<br>
+                                 v v<br>
++-----------------------------------------------------------------------+<br>
+|                    ADAPTERS & BINDING LAYER                           |<br>
+|  [ServiceAdapter]       [OrderAdapter]       [MessageAdapter]          |<br>
++-----------------------------------------------------------------------+<br>
+                                 | |<br>
+                                 v v<br>
++-----------------------------------------------------------------------+<br>
+|                   REPOSITORY & DATA ACCESS LAYER                      |<br>
+|  [ServiceRepository]      [OrderRepository]     [SearchHistoryManager]|<br>
++-----------------------------------------------------------------------+<br>
+                                 | |<br>
+                                 v v<br>
++-----------------------------------------------------------------------+<br>
+|                   CLOUD & BACKEND SERVICES (Firebase)                 |<br>
+|  [FirebaseHelper] <==> [Firebase Realtime Database] & [Firebase Auth] |<br>
++-----------------------------------------------------------------------+
+</div>
+
+<h2>2.3 تلخيص عناصر التطبيق (Activities & Classes)</h2>
+
+<h3>1. MainActivity.java</h3>
+<p>شاشة البداية والترحيب (Splash Screen)، تعمل لمدة 1.5 ثانية ثم تنتقل آلياً إلى شاشة اختيار الدور <code>RoleSelectionActivity</code>.</p>
+
+<h3>2. RoleSelectionActivity.java</h3>
+<p>شاشة تسليم وتسجيل الدخول واختيار نوع الحساب (عميل أم مقدم خدمة)، مع التحقق من صحة البريد الإلكتروني والاسم عبر <code>Patterns.EMAIL_ADDRESS</code>.</p>
+
+<h3>3. ClientMainActivity.java</h3>
+<p>الواجهة الرئيسية للعميل لتصفح الخدمات بحسب التصنيفات، والبحث، واستعراض "طلباتي" مع تحديثات الحالات اللحظية.</p>
+
+<h3>4. ProviderMainActivity.java</h3>
+<p>لوحة تحكم مقدم الخدمة لمتابعة كافة الخدمات المتاحة بالسوق، وطرح خدمات جديدة، وإدارة الطلبات الواردة لخدماته (قبول / رفض / إكمال).</p>
+
+<h3>5. SearchActivity.java</h3>
+<p>شاشة البحث المتقدم بالاسم والسعر المستهدف مع سجل البحث التفاعلي عبر <code>SearchHistoryManager</code>.</p>
+
+<h3>6. AddServiceActivity.java</h3>
+<p>شاشة طرح وإنشاء خدمة جديدة مع اختيار وتشفير الصور عبر <code>uriToBase64()</code>.</p>
+
+<h3>7. ServiceDetailActivity.java</h3>
+<p>شاشة عرض تفاصيل الخدمة الكاملة، التواصل عبر الواتساب والمكالمات، وفتح شاشة الدردشة أو إرسال طلب جديد.</p>
+
+<h3>8. ChatActivity.java</h3>
+<p>شاشة المحادثة المباشرة بين العميل والمزود في الوقت الفعلي مع المزامنة السحابية الفورية عبر <code>/chats/{chatId}/messages</code>.</p>
+
+<h2>2.4 هياكل البيانات المستعملة (Data Structures) ودورها</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>هيكل البيانات</th>
+            <th>الصف المستخدم فيه</th>
+            <th>الهدف ودوره في المشروع</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>ArrayList&lt;T&gt;</strong></td><td><code>ServiceAdapter</code>, <code>OrderAdapter</code>, <code>MessageAdapter</code></td><td>تخزين قوائم العناصر المتغيرة بشكل متسلسل وسريع لعرضها داخل مكوّنات <code>RecyclerView</code>.</td></tr>
+        <tr><td><strong>LinkedHashMap&lt;K, V&gt;</strong></td><td><code>ServiceRepository</code>, <code>OrderRepository</code></td><td>الربط بين معرف العنصر الفريد (Key: ID) وكائن البيانات (Value) لتحقيق سرعة بحث O(1) مع الحفاظ على ترتيب الإدخال.</td></tr>
+        <tr><td><strong>Set&lt;String&gt; / HashSet</strong></td><td><code>SearchHistoryManager</code></td><td>ضمان عدم تكرار كلمات البحث في SharedPreferences وتخزين القيم الفريدة فقط.</td></tr>
+    </tbody>
+</table>
+
+<h2>2.5 انتقال البيانات بين الواجهات (Data Passing)</h2>
+<p>تنتقل البيانات بين الـ Activities عبر كائنات <code>Intent</code> محملة بـ <code>Intent Extras</code>. حققت الفئات الرئيسية (<code>ServiceItem</code>, <code>OrderItem</code>, <code>ChatMessage</code>) واجهة <code>Serializable</code> لتسهيل التمرير.</p>
+
+<pre><code>// 1. تمرير كائن الخدمة من ClientMainActivity إلى ServiceDetailActivity
+Intent intent = new Intent(ClientMainActivity.this, ServiceDetailActivity.class);
+intent.putExtra("SERVICE_ITEM", serviceItem);
+startActivity(intent);
+
+// 2. استقبال الكائن داخل ServiceDetailActivity مع مراعاة إصدارات الأندرويد الحديثة
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+    serviceItem = getIntent().getSerializableExtra("SERVICE_ITEM", ServiceItem.class);
+} else {
+    @SuppressWarnings("deprecation")
+    ServiceItem item = (ServiceItem) getIntent().getSerializableExtra("SERVICE_ITEM");
+    serviceItem = item;
+}</code></pre>
+
+<!-- ================= SECTION 3 ================= -->
+<div class="page-break"></div>
+<h1>3. الخوارزميات المبتكرة والمطابقة الذكية</h1>
+
+<h2>3.1 خوارزمية المطابقة الذكية بحسب تقارب الميزانية (Price Proximity Matching Algorithm)</h2>
+<p>تعمل هذه الخوارزمية داخل <code>ServiceRepository.java</code> لتفلترة وترتيب الخدمات بحسب الميزانية التي يحددها العميل بالدولار ($):</p>
+
+<pre><code>// الكود البرمجي المباشر للخوارزمية من ServiceRepository.java
+public synchronized List&lt;ServiceItem&gt; searchServices(String query, double targetPrice, String category) {
+    List&lt;ServiceItem&gt; filtered = new ArrayList&lt;&gt;();
+    String q = query != null ? query.trim().toLowerCase() : "";
+
+    for (ServiceItem item : servicesMap.values()) {
+        boolean matchesQuery = q.isEmpty() ||
+                (item.getTitle() != null && item.getTitle().toLowerCase().contains(q)) ||
+                (item.getDescription() != null && item.getDescription().toLowerCase().contains(q));
+
+        boolean matchesCategory = category == null || category.equalsIgnoreCase("الكل") ||
+                (item.getCategory() != null && item.getCategory().equalsIgnoreCase(category));
+
+        boolean matchesPriceRange;
+        if (targetPrice > 0) {
+            double diff = Math.abs(item.getPrice() - targetPrice);
+            double maxAllowedDiff = Math.max(25.0, targetPrice * 0.40);
+            matchesPriceRange = diff <= maxAllowedDiff;
+        } else {
+            matchesPriceRange = true;
+        }
+
+        if (matchesQuery && matchesCategory && matchesPriceRange) {
+            filtered.add(item);
+        }
+    }
+
+    if (targetPrice > 0) {
+        filtered.sort((o1, o2) -> {
+            double diff1 = Math.abs(o1.getPrice() - targetPrice);
+            double diff2 = Math.abs(o2.getPrice() - targetPrice);
+            return Double.compare(diff1, diff2);
+        });
+    }
+
+    return filtered;
+}</code></pre>
+
+<h2>3.2 خوارزمية ضغط وتقليص أبعاد الصور إلى Base64 String</h2>
+<p>تستخدم في <code>AddServiceActivity.java</code> لتحويل صورة المعرض المرفقة لسلسلة نصية خفيفة الوزن لتخزينها بالسحابة:</p>
+
+<pre><code>private String uriToBase64(Uri uri) {
+    if (uri == null) return null;
+    try {
+        InputStream inputStream = getContentResolver().openInputStream(uri);
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+        if (inputStream != null) inputStream.close();
+        if (bitmap == null) return null;
+
+        int maxDim = 500; // تقليص الأبعاد القصوى إلى 500 بكسل
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        if (width > maxDim || height > maxDim) {
+            float ratio = Math.min((float) maxDim / width, (float) maxDim / height);
+            width = Math.round(width * ratio);
+            height = Math.round(height * ratio);
+            bitmap = Bitmap.createScaledBitmap(bitmap, width, height, true);
+        }
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos); // ضغط جودة الصورة إلى 70%
+        byte[] bytes = baos.toByteArray();
+        return Base64.encodeToString(bytes, Base64.DEFAULT);
+    } catch (Exception e) {
+        return null;
+    }
+}</code></pre>
+
+<!-- ================= SECTION 4 ================= -->
+<div class="page-break"></div>
+<h1>4. الربط السحابي وقواعد البيانات (Firebase & Database Details)</h1>
+
+<h2>4.1 الشبك على خوادم Firebase السحابية</h2>
+<p>تم الشبك بـ <strong>Firebase Realtime Database</strong> و <strong>Firebase Authentication</strong> عبر الصف المطور <code>FirebaseHelper.java</code>:</p>
+
+<pre><code>public class FirebaseHelper {
+    private static final String TAG = "FirebaseHelper";
+    private static final String DB_URL_US = "https://work-4451a-default-rtdb.firebaseio.com";
+    private static FirebaseDatabase databaseInstance;
+
+    public static synchronized FirebaseDatabase getDatabase() {
+        if (databaseInstance == null) {
+            try {
+                databaseInstance = FirebaseDatabase.getInstance(DB_URL_US);
+                databaseInstance.setPersistenceEnabled(true);
+            } catch (Exception e) {
+                databaseInstance = FirebaseDatabase.getInstance();
+            }
+        }
+        return databaseInstance;
+    }
+
+    public static void ensureAuthenticated(OnAuthCompleteListener listener) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            if (listener != null) listener.onAuthSuccess();
+            return;
+        }
+
+        auth.signInAnonymously().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Log.d(TAG, "Signed in anonymously to Firebase Auth successfully!");
+            }
+            if (listener != null) listener.onAuthSuccess();
+        });
+    }
+}</code></pre>
+
+<h2>4.2 الهيكل الشجري لقاعدة البيانات (Firebase NoSQL Structure)</h2>
+
+<pre><code>{
+  "services": {
+    "service_uuid_1": {
+      "id": "service_uuid_1",
+      "title": "تصميم شعار وهوية بصرية احترافية",
+      "category": "تصميم",
+      "description": "تصميم شعارات مودرن وسلم الملفات المصدري...",
+      "price": 25.0,
+      "providerName": "أحمد المهندس",
+      "providerPhone": "0791234567",
+      "rating": 5.0,
+      "reviewsCount": 1,
+      "imageBase64": "/9j/4AAQSkZJRgABAQAAAQABAAD..."
+    }
+  },
+  "orders": {
+    "order_uuid_1": {
+      "orderId": "order_uuid_1",
+      "serviceItem": { "...": "..." },
+      "clientName": "خالد العميل",
+      "clientPhone": "0788889999",
+      "orderDate": "2026-10-20",
+      "status": "في انتظار موافقة مقدم الخدمة ⏳"
+    }
+  },
+  "chats": {
+    "chat_order_uuid_1": {
+      "messages": {
+        "msg_uuid_1": {
+          "messageId": "msg_uuid_1",
+          "chatId": "chat_order_uuid_1",
+          "senderName": "خالد العميل",
+          "senderRole": "client",
+          "text": "مرحباً، متى يمكنك البدء بتنفيذ الخدمة؟",
+          "timestamp": 1792500000000,
+          "timeFormatted": "12:45 PM"
+        }
+      }
+    }
+  }
+}</code></pre>
+
+<!-- ================= SECTION 5 ================= -->
+<div class="page-break"></div>
+<h1>5. التوثيق البرمجي (JavaDocs) ودليل الاستخدام</h1>
+
+<h2>5.1 توثيق الجافا البرمجي (JavaDocs)</h2>
+<pre><code>/**
+ * Repository singleton class managing service data operations,
+ * providing real-time synchronization with Firebase Realtime Database
+ * and price proximity matching algorithms.
+ *
+ * @author Student Developer
+ * @version 1.0
+ */
+public class ServiceRepository {
+
+    /**
+     * Listener interface for notifying UI components upon Firebase data changes.
+     */
+    public interface OnDataChangeListener {
+        /**
+         * Triggered when Firebase updates the underlying service list.
+         */
+        void onDataChanged();
+    }
+
+    /**
+     * Filters and sorts services based on user text query, category, and target price proximity.
+     *
+     * @param query       Text search string matching service title or description.
+     * @param targetPrice Target price in USD specified by the user (-1 for no budget filter).
+     * @param category    Category filter name ("الكل" for all categories).
+     * @return Sorted list of matching ServiceItem objects closest to the target budget.
+     */
+    public synchronized List&lt;ServiceItem&gt; searchServices(String query, double targetPrice, String category) {
+        // Implementation
+    }
+}</code></pre>
+
+<h2>5.2 دليل الاستخدام المصور الشامل (User Manual)</h2>
+<ol>
+    <li><strong>اختيار الدور:</strong> يدخل العميل أو المزود اسمه وبريده الإلكتروني ويحدد واجهته.</li>
+    <li><strong>تصفح وطرح الخدمات:</strong> يستطيع المزود طرح خدماته مع إضافة الصور والسعر بالدولار، بينما يستطيع العميل تصفح الخدمات والتصنيفات والبحث بالميزانية.</li>
+    <li><strong>إرسال الطلب وإدارته:</strong> يطلب العميل الخدمة مع إدخال هاتف التواصل، فتظهر فوراً في تبويب "الطلبات الواردة" لدى المزود مع خيارات القبول/الرفض والإكمال.</li>
+    <li><strong>الدردشة المباشرة (In-App Chat):</strong> يمكن لأي طرف النقر على "مراسلة بالتطبيق 💬" لبدء شات سحابي مباشر بالوقت الفعلي.</li>
+</ol>
+
+<!-- ================= SECTION 6 ================= -->
+<div class="page-break"></div>
+<h1>6. أثر المشروع والمراجع العلمية (Impact & References)</h1>
+
+<h2>6.1 أثر المشروع عليّ والشغف الشخصي</h2>
+<p>أكسبني هذا المشروع خبرة عميقة وعملية في بناء تطبيقات أندرويد متكاملة تحاكي الأنظمة الواقعية. تعلمت كيفية إدارة دورة حياة الواجهات (<code>Activity Lifecycle</code>)، وبناء واجهات مرنة باستخدام Material Design 3، واستخدام <strong>Firebase Realtime Database</strong> وتصميم قواعد البيانات الشجرية NoSQL، وتفعيل المزامنة المباشرة وتشفير الصور.</p>
+
+<div class="note-box">
+    <strong>🌟 شكر وتقدير خاص:</strong>
+    <p>أتوجّه بخالص الشكر والتقدير للأستاذ الفاضل <strong>أستاذ علي</strong> على متابعته وتوجيهاته الدائمة خلال خطوات تنفيذ هذا التطبيق، والتي كان لها الأثر الأكبر في صقل هذه المهارات وتجاوز التحديات البرمجية الصعبة.</p>
+</div>
+
+<h2>6.2 المراجع العلمية المعتمدة (APA Citation Style)</h2>
+<ol>
+    <li>Android Developers. (2026). <em>Build Android apps with Kotlin and Java</em>. Google Developers. Retrieved from https://developer.android.com/docs</li>
+    <li>Firebase Documentation. (2026). <em>Firebase Realtime Database for Android</em>. Google Cloud. Retrieved from https://firebase.google.com/docs/database/android/start</li>
+    <li>Material Design. (2026). <em>Material 3 design guidelines for Android</em>. Google Design. Retrieved from https://m3.material.io/</li>
+    <li>Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Addison-Wesley.</li>
+</ol>
+
+</body>
+</html>

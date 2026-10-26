@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WORK</string>
+    <string name="app_tagline">منصة الخدمات والأعمال الفردية</string>
+
+    <!-- Role Selection & Login -->
+    <string name="welcome_title">مرحباً بك في WORK</string>
+    <string name="welcome_subtitle">يرجى تسجيل الدخول وااختيار نوع الحساب</string>
+    <string name="role_client_title">دخول كعميل</string>
+    <string name="role_client_desc">ابحث عن خدمات بميزانية محددة وأسعار مقترحة تناسبك</string>
+    <string name="role_provider_title">دخول كمزود خدمة</string>
+    <string name="role_provider_desc">اعرض خدماتك ومهاراتك وحدد أسعارك لجذب العملاء</string>
+    <string name="btn_continue">تسجيل الدخول والمتابعة</string>
+    <string name="enter_name_label">الاسم الكامل *</string>
+    <string name="enter_name_hint">أدخل اسمك الكامل</string>
+    <string name="enter_email_label">البريد الإلكتروني *</string>
+    <string name="enter_email_hint">أدخل بريدك الإلكتروني (example@domain.com)</string>
+    <string name="err_invalid_email">يرجى كتابة بريد إلكتروني صحيح ومُتحقق منه</string>
+    <string name="err_empty_name">يرجى كتابة الاسم للبدء</string>
+
+    <!-- Client Screen -->
+    <string name="client_header_title">أهلاً بك يا عميلنا العزيز 👋</string>
+    <string name="client_header_subtitle">ما هي الخدمة التي تحتاجها اليوم وبأي سعر؟</string>
+    <string name="search_service_hint">اسم الخدمة (مثال: تصميم شعار، برمجة تطبيق)</string>
+    <string name="target_price_hint">الميزانية / السعر المحدد ($ دولار)</string>
+    <string name="btn_search">بحث عن خدمات مشابهة</string>
+    <string name="all_categories">الكل</string>
+    <string name="cat_programming">برمجة</string>
+    <string name="cat_design">تصميم</string>
+    <string name="cat_translation">ترجمة</string>
+    <string name="cat_marketing">تسويق</string>
+    <string name="cat_maintenance">صيانة</string>
+    <string name="results_title">الخدمات المشابهة وفي النطاق السعري المقارب</string>
+    <string name="no_services_found">لم يتم العثور على خدمات مشابهة لميزانيتك والبحث المحدد. جرب البحث بسعر أو اسم مختلف!</string>
+    <string name="switch_role">تغيير الحساب</string>
+
+    <!-- Provider Screen -->
+    <string name="provider_header_title">لوحة أصحاب الخدمات 🛠️</string>
+    <string name="provider_header_subtitle">إدارة وتكليف الخدمات المعروضة للعملاء</string>
+    <string name="btn_add_new_service">+ إضافة خدمة جديدة</string>
+    <string name="my_posted_services">الخدمات التي قمت بطرحها</string>
+    <string name="no_posted_services">لم تقم بإضافة أي خدمة بعد. اضغط على الزر أعلاه لإضافة خدمتك الأولى!</string>
+
+    <!-- Add Service Form -->
+    <string name="add_service_title">طرح خدمة جديدة</string>
+    <string name="service_name_label">اسم الخدمة</string>
+    <string name="service_name_hint">مثال: تطوير موقع إلكتروني احترافي</string>
+    <string name="service_category_label">التصنيف</string>
+    <string name="service_price_label">السعر المطلوب ($ دولار)</string>
+    <string name="service_price_hint">مثال: 50</string>
+    <string name="service_desc_label">وصف تفصيلي للخدمة</string>
+    <string name="service_desc_hint">اكتب تفاصيل الخدمة وما تميز به وما سيتسلمه العميل…</string>
+    <string name="provider_name_label">اسمك / اسم مقدم الخدمة</string>
+    <string name="provider_name_hint">مثال: أسامة أحمد</string>
+    <string name="provider_phone_label">طريقة التواصل والتأكد منها (هاتف / واتساب / إيميل) *</string>
+    <string name="provider_phone_hint">مثال: +962791234567 أو provider@email.com</string>
+    <string name="btn_publish_service">نشر الخدمة الآن</string>
+    <string name="service_added_success">تم التأكد ونشر الخدمة بنجاح!</string>
+    <string name="err_fill_fields">يرجى ملء جميع الحقول المطلوبة للتأكد</string>
+    <string name="err_invalid_contact">طريقة التواصل غير صحيحة، يرجى إدخال رقم هاتف محلي (أرقام فقط) أو بريد إلكتروني صحيح للتأكد</string>
+
+    <!-- Details Screen -->
+    <string name="service_details_title">تفاصيل الخدمة والتواصل</string>
+    <string name="provider_info">طرق التواصل المباشرة مع مقدم الخدمة</string>
+    <string name="btn_contact_whatsapp">محادثة واتساب مباشرة 💬</string>
+    <string name="btn_contact_phone">اتصال هاتفي مباشر 📞</string>
+    <string name="btn_send_direct_message">إرسال رسالة استفسار مباشرة ✉️</string>
+    <string name="btn_order_now">طلب الخدمة الآن ($)</string>
+
+    <string name="currency">$</string>
+    <string name="exact_price_match">سعر مطابق لميزانيتك! 🎯</string>
+    <string name="similar_price">سعر قريب من ميزانيتك 💡</string>
+</resources>
